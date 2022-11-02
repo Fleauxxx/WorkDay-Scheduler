@@ -7,6 +7,9 @@ var text = $('textarea');
 
 $('.time-block').each(function() {
     var timeId = parseInt($(this).find('.hour').attr('id'));
+
+    localStorage.getItem('work-cal-' + 'id');
+    
     if (timeId < currentHr) {
         $(this).addClass('past');
     } else if (timeId === currentHr) {
@@ -23,6 +26,12 @@ $('.time-block').each(function() {
 });
 
 saveBtnEl.on('click', function(){
+    var button = $(this);
+    var row = button.parent();
+    var text = row.find('textarea').val();
+    var hour = row.find('.hour').attr('id');
+    console.log("TEXT FROM TEXTAREA", text);
+    localStorage.setItem('work-cal-' + hour, text);
     alert('saved to local storage');
 });
 
