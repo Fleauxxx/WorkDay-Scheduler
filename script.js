@@ -1,11 +1,12 @@
 var today = moment();
 $("#currentDay").text(today.format("dddd, MMM Do, YYYY"));
-var saveBtnEl = $('saveBtn');
+var saveBtnEl = $('.saveBtn');
+var currentHr = moment().hours();
+var text = $('textarea');
 
 
-$('#time').each(function() {
-    var timeId = parseInt($(this).attr('#timeId'));
-    var currentHr = moment().hours();
+$('.time-block').each(function() {
+    var timeId = parseInt($(this).find('.hour').attr('id'));
     if (timeId < currentHr) {
         $(this).addClass('past');
     } else if (timeId === currentHr) {
@@ -20,4 +21,9 @@ $('#time').each(function() {
     }
     
 });
+
+saveBtnEl.on('click', function(){
+    alert('saved to local storage');
+});
+
 
